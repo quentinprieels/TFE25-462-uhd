@@ -16,6 +16,10 @@
 ###############################################################################
 # HOST CHANGES (UHD)
 ###############################################################################
+- re: host/examples/rfnoc-gain|host/tests/test_modtool.py
+  add:
+    - uhd.build.linux
+    - uhd.rfnoc_modtool.all
 # If only a unit test changed, then we need to re-run unit tests, but no HW tests
 - re: ^host/tests/[^/]+(cpp|py)$|^host/tests/CMakeLists.txt
   add:
@@ -32,6 +36,15 @@
     - uhd.docs
   include_content: comments
   stop: False
+# Image builder
+# Note the FPGA pipelines have their own rules around the image builder. For
+# UHD, we just run a build to make sure the package is not in a weird state.
+- re: ^host/python/uhd/rfnoc_utils/grc.py
+  add:
+    - uhd.build.linux
+- re: ^host/python/uhd/rfnoc_utils/
+  add:
+    - uhd.build.linux
 # Device-specific changes. These should trigger HW tests only on those devices
 # they affect. We start with daughterboard rules, then motherboard rules.
 - re: host/lib/usrp/dboard/zbx/
