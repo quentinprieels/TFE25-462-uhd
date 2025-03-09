@@ -29,11 +29,11 @@ def get_options():
     return args
 
 def get_top_level_match_str(tag_text):
-    return r'(.*\<' + tag_text + r'\>)(.+)(\</' + tag_text + r'\>)'
+    return '(.*\<' + tag_text + '\>)(.+)(\</' + tag_text + '\>)'
 def get_match_str(item):
-    return r'(.*\<spirit:configurableElementValue spirit:referenceId=\".*\.' + item + r'\"\>)(.+)(\</spirit:configurableElementValue\>)'
+    return '(.*\<spirit:configurableElementValue spirit:referenceId=\".*\.' + item + '\"\>)(.+)(\</spirit:configurableElementValue\>)'
 def get_empty_match_str(item):
-    return r'(.*\<spirit:configurableElementValue spirit:referenceId=\".*\.' + item + r'\")/\>'
+    return '(.*\<spirit:configurableElementValue spirit:referenceId=\".*\.' + item + '\")/\>'
 
 def main():
     args = get_options();
